@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,10 +60,34 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
     }
 
-    @Override
+    public void playAgain(View view) {
+        Button playAgainButton = findViewById(R.id.playAgainButton);
+        TextView winnerTextview = findViewById(R.id.winnerTextView);
+
+        winnerTextview.setVisibility(View.INVISIBLE);
+        playAgainButton.setVisibility(View.INVISIBLE);
+
+        GridLayout myGridView = findViewById(R.id.gridLayout);
+
+
+        for (int i = 0; i < myGridView.getChildCount(); i++) {
+            ImageView counter = (ImageView) myGridView.getChildAt(i);
+
+            counter.setImageDrawable(null);
+
+        }
+
+        activePlayer = 0;
+        for (int i = 0; i < gameState.length; i++)
+        {
+            gameState[i]=2;
+        }
+        gameActive = true;
+
+    }
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
