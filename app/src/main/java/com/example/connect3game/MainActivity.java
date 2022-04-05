@@ -8,6 +8,9 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //yellow=0 red=1
+    int activePlayer = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,8 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
         counter.setTranslationY(-1500);
 
-        counter.setImageResource(R.drawable.yellow);
+        if(activePlayer==0){
+            counter.setImageResource(R.drawable.yellow);
+            activePlayer = 1;
+        }else{
+            counter.setImageResource(R.drawable.red);
+            activePlayer = 0;
+        }
 
-        counter.animate().translationYBy(1500).setDuration(300);
+        counter.animate().translationYBy(1500).rotation(3600).setDuration(300);
     }
 }
