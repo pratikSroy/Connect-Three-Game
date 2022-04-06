@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     boolean gameActive = true;
 
     public void dropIn(View view) {
-
         ImageView counter = (ImageView) view;
         int taggedCounter = Integer.parseInt(counter.getTag().toString());
 
@@ -58,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
                     playAgainButton.setVisibility(View.VISIBLE);
                 }
             }
+        }
+        else if(gameState[taggedCounter]!=2 && gameActive){
+            gameActive = false;
+            Button playAgainButton = findViewById(R.id.playAgainButton);
+            TextView winnerTextview = findViewById(R.id.winnerTextView);
+
+            winnerTextview.setText("Bad luck, Try again.");
+
+            winnerTextview.setVisibility(View.VISIBLE);
+            playAgainButton.setVisibility(View.VISIBLE);
         }
 
     }
