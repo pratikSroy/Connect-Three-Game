@@ -1,6 +1,7 @@
 package com.example.connect3game;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 counter.setImageResource(R.drawable.red);
                 activePlayer = 0;
             }
+
             counter.animate().translationYBy(1500).rotation(3600).setDuration(300);
 
             for(int[] winningPosition : winningPositions)
@@ -57,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
                     playAgainButton.setVisibility(View.VISIBLE);
                 }
             }
+
         }
-        else if(gameState[taggedCounter]!=2 && gameActive){
+        else  if(gameState[taggedCounter]!=2 && gameActive){
             gameActive = false;
             Button playAgainButton = findViewById(R.id.playAgainButton);
             TextView winnerTextview = findViewById(R.id.winnerTextView);
@@ -100,5 +103,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 }
